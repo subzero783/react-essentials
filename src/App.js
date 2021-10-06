@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 
 
@@ -13,12 +13,25 @@ function RegularComponent(){
 }
 
 
-function App({authorized}) {
+function App() {
+
+  const [emotion, setEmotion] = useState("happy");
+  console.log(emotion);
+
   return(
     <>
-      {authorized ? <SecretComponent/> : <RegularComponent/>}
+      <h1>Current emotion is {emotion}.</h1>
+      <button onClick={()=>setEmotion('happy')}>Happy</button>
+      <button onClick={()=>setEmotion('frustrated')}>Frustrate</button>
+      <button onClick={()=>setEmotion('enthusiastic')}>Enthuse</button>
     </>
   )
+
+  // return(
+  //   <>
+  //     {authorized ? <SecretComponent/> : <RegularComponent/>}
+  //   </>
+  // )
   // return props.authorized ? <SecretComponent/> : <RegularComponent/>
 
   // if(props.authorized){
