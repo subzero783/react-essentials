@@ -11,6 +11,6 @@ const [mostImportantItem, second] = [
 console.log(mostImportantItem, second)
 
 ReactDOM.render(
-  <App authorized={true} />,
+  <App login="subzero783" />,
   document.getElementById('root')
 );
