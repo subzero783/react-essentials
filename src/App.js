@@ -1,60 +1,31 @@
-import './App.css';
-import restaurant from './restaurant.jpg'
 
-function Header(props){
+import React from 'react'
+import './App.css'
 
+
+
+function SecretComponent(){
+  return <h1>Super secret information for authorized users only</h1>
+}
+
+function RegularComponent(){
+  return <h1>Everyone can see this component</h1>
+}
+
+
+function App({authorized}) {
   return(
-    <header>
-      <h1>{props.name}'s Kitchen</h1>
-    </header>
-  );
+    <>
+      {authorized ? <SecretComponent/> : <RegularComponent/>}
+    </>
+  )
+  // return props.authorized ? <SecretComponent/> : <RegularComponent/>
+
+  // if(props.authorized){
+  //   return <SecretComponent/>
+  // }else{
+  //   return <RegularComponent/>
+  // }
 }
 
-function Main(props){
-  return(
-    <section>
-      <p>We serve the most {props.adjective} food around.</p>
-      <img src={restaurant} height={200} alt="Napkin with silverware" />
-      <ul style={{
-        "textAlign" : "left"
-      }}>
-        {props.dishes.map((dish) => 
-          <li key={dish.id}>{dish.title}</li>
-        )}
-      </ul>
-    </section>
-  );
-}
-
-function Footer(props){
-  return(
-    <footer>
-      <p>Copyright {props.year}</p>
-    </footer>
-  );
-}
-
-const dishes = [
-  "Macaroni", 
-  "Salmon", 
-  "Tofu with Vegetables", 
-  "Minestrone"
-];
-
-const dishObjects = dishes.map((dish, i) => 
-  ({id: i, title: dish})
-);
-
-
-
-function App() {
-  return (
-    <div className="App">
-      <Header name="Gustavo" />
-      <Main adjective="amazing" dishes={dishObjects} />
-      <Footer year={new Date().getFullYear() } />
-    </div>
-  );
-}
-
-export default App;
+export default App
